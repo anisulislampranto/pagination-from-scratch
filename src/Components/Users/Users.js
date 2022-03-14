@@ -1,12 +1,17 @@
 import React from 'react';
+import User from '../User/User';
 
-const Users = ({users}) => {
+const Users = ({users, page}) => {
+    const startIndex = (page - 1)* 10;
+    const selectedUsers = users.slice(startIndex, startIndex + 10)
 
-    console.log(users);
+
 
     return (
         <div>
-            <h1>Users </h1>
+            {
+                selectedUsers.map(user => <User user={user} key={user.id} />)
+            }
         </div>
     );
 };
